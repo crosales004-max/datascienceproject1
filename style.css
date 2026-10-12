@@ -1,3 +1,4 @@
+/* ===== 1. Variables CSS (tu paleta) ===== */
 :root {
     --color-bg: #FAF7F2;
     --color-text: #2D3142;
@@ -8,40 +9,42 @@
     --color-footer-bg: #3A4356;
     --color-footer-text: #FAF7F2;
 }
-
-/*=====Regla para cambiar forma en el navegador calculando el tamaño de los elementos====*/
+ 
 *, *::before, *::after { box-sizing: border-box; }
-
+ 
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--color-bg);
     color: var(--color-text);
     margin: 0;
-}   
-
+    line-height: 1.6;
+}
+ 
+/* ===== Encabezado: degradado + tipografía fluida (clamp) ===== */
 header{
     background: linear-gradient(135deg, var(--color-primary), var(--color-footer-bg));
     color: var(--color-footer-text);
     text-align: center;
     padding: clamp(20px, 5vw, 40px);
 }
-
+ 
 header h1{
     margin: 0;
     font-size: clamp(1.4rem, 5vw, 2rem);
     letter-spacing: 0.5px;
 }
-
+ 
 header p{
     color: var(--color-footer-text);
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     margin: 8px auto 0;
     max-width: 800px;
 }
-
+ 
+/* ===== 2. Flexbox: navegación ===== */
 nav{
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;      /* celular: enlaces apilados */
     align-items: center;
     gap: 4px;
     padding: 15px;
@@ -51,7 +54,7 @@ nav{
     background-color: var(--color-bg);
     box-shadow: 0 2px 6px rgba(45, 49, 66, 0.12);
 }
-
+ 
 nav a{
     text-decoration: none;
     padding: 8px 16px;
@@ -60,12 +63,13 @@ nav a{
     border-radius: 8px;
     transition: color 0.2s ease, background-color 0.2s ease;
 }
-
+ 
 nav a:hover{
     color: var(--color-accent);
     background-color: var(--color-section-bg);
 }
-
+ 
+/* ===== Secciones (mobile first: una sola columna) ===== */
 section{
     text-align: center;
     background-color: var(--color-section-bg);
@@ -73,7 +77,7 @@ section{
     padding: 24px 16px;
     scroll-margin-top: 90px;     /* el menú fijo no tapa el título */
 }
-
+ 
 section h2{
     color: var(--color-primary);
     font-size: clamp(1.25rem, 4vw, 1.625rem);
@@ -82,11 +86,13 @@ section h2{
     padding-bottom: 6px;
     margin: 0 0 20px;
 }
-
+ 
 section img{
     display: block;
     margin: 0 auto 20px auto;
 }
+ 
+/* ===== Imágenes: flexibles, con sombra y efecto hover ===== */
 img{
     width: 80%;
     max-width: 320px;
@@ -97,12 +103,12 @@ img{
     box-shadow: 0 4px 12px rgba(45, 49, 66, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+ 
 img:hover{
     transform: scale(1.04);
     box-shadow: 0 10px 24px rgba(45, 49, 66, 0.3);
 }
-
+ 
 footer{
     text-align: center;
     padding: 20px;
@@ -110,10 +116,10 @@ footer{
     color: var(--color-footer-text);
     margin-top: 60px;
 }
-
-/*========Propiedades de sitio responsivo=========*/
-/*=====Dispositivos móviles: desplegar menú en fila=====*/
-
+ 
+/* ===== 3. Media queries ===== */
+ 
+/* Tablet: menú en fila */
 @media (min-width: 600px){
     nav{
         flex-direction: row;
@@ -121,17 +127,17 @@ footer{
         justify-content: center;
         gap: 8px 20px;
     }
-
+ 
     section{
         padding: 40px 32px;
     }
-
+ 
     section h2{
         display: inline-block;
     }
 }
-
-/*=====Equipos de cómputo: Dividir secciones en dos columnas=====*/
+ 
+/* Computadora: sección en 2 columnas con CSS Grid */
 @media (min-width: 900px){
     section{
         padding: 60px max(32px, calc((100% - 1000px) / 2));
@@ -143,28 +149,28 @@ footer{
         gap: 20px 40px;
         align-items: center;
     }
-
-    /*=====Para que la sección quede a la par de la imagen que le corresponde=====*/
+ 
+    /* Secciones pares: la imagen pasa a la derecha */
     section:nth-of-type(even){
         grid-template-columns: 2fr 1fr;
         grid-template-areas:
             "titulo titulo"
             "texto imagen";
     }
-
+ 
     section h2{
         grid-area: titulo;
         justify-self: center;
         display: inline-block;
     }
-
+ 
     section img{
         grid-area: imagen;
         width: 100%;
         max-width: none;
         margin: 0;
     }
-
+ 
     section p{
         grid-area: texto;
         text-align: left;
