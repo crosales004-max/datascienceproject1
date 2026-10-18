@@ -116,8 +116,54 @@ footer{
     color: var(--color-footer-text);
     margin-top: 60px;
 }
+
+/* ==== Botón Hacer Click ==== */
+
+.contador-seccion{
+    text-align: center;
+}
  
-/* ===== 3. Media queries ===== */
+.contador-box h2#numero{
+    color: var(--color-primary);
+}
+ 
+#btn-contador{
+    background-color: var(--color-secondary);
+    color: var(--color-footer-text);
+    border: none;
+    padding: 14px 32px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+ 
+#btn-contador:hover{
+    background-color: var(--color-primary);
+    transform: translateY(-2px);
+}
+ 
+#btn-contador:active{
+    transform: translateY(0);
+}
+ 
+/* ===== Modo oscuro - contador ===== */
+body.oscuro .contador-box h2#numero{
+    color: var(--color-accent);
+}
+ 
+body.oscuro #btn-contador{
+    background-color: var(--color-footer-bg);
+    color: var(--color-footer-text);
+}
+ 
+body.oscuro #btn-contador:hover{
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+}
+
+/* ===== Media queries ===== */
  
 /* Tablet: menú en fila */
 @media (min-width: 600px){
