@@ -234,8 +234,14 @@ body section.contador-seccion{
     gap: 20px;
 }
 
-/* Quita el subrayado naranja que hereda el número de section h2 */
-.contador-box h2#numero{
+/* Número: sin el subrayado heredado de "section h2" */
+.contador-seccion h2#numero{
+    color: var(--color-primary);
     border-bottom: none;
     margin: 0;
+}
+
+/* Modo oscuro */
+body.oscuro .contador-seccion h2#numero{
+    color: var(--color-accent);
 }
