@@ -149,6 +149,7 @@ footer{
 }
  
 /* ===== Modo oscuro - contador ===== */
+
 body.oscuro .contador-box h2#numero{
     color: var(--color-accent);
 }
